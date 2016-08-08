@@ -1,0 +1,520 @@
+//
+// Testing CSSHub Stylus
+//
+
+// Connect library CSSHub Stylus
+@import "./../../csshub/styl/_exports"
+
+/* Helpers
+------------------------------------------------------------------------------ */
+
+/* Test Support placeholder */
++placeholder()
+	color: red
+
+/* Test Support focus placefolder */
+:focus
+	+placeholder()
+		color: red
+
+/* Test Support css viewport */
++viewport()
+	width: device-width
+
+/* Test Support css full-screen */
++full-screen()
+	display: inline-block
+
+/* Test Retina query */
++retina-query(all, 2)
+	div
+		color: red
+
+/* Test vendor prefixes */
+div
+	vendor-prefixes('vendor-prefixes', 'test', only: webkit moz khtml o ms official)
+
+/* Test vendor value prefixes */
+div
+	padding: vendor-value-prefixes(box, only: webkit moz khtml o ms official)
+
+/* Test size */
+div
+	size: 50px
+	size: 100px 100px
+
+/* Test position fixed */
+div
+	fixed: top 1em left right 10% bottom
+
+/* Test position absolute */
+div
+	absolute: top 0 left 1em
+
+/* Test position relative */
+div
+	relative: top 0 left 1em
+
+/* Test calc */
+div
+	padding: calc('100px - 5%')
+	width: calc('100px - 5%', 80%)
+
+/* Test unit convert */
+div
+	font: bold em(14px)/1.2 $csshub_font-stack-arial
+
+	// Ignore base: $csshub_font-size: 100%;
+	margin: rem(18px, true) rem(20px, true) rem(15px, true)
+
+	// Default: 100% == 16px == 1em == 12pt == 1rem
+	font-size: px(100%)         // Test: % to px
+	font-size: pt(16px)         // Test: px to pt
+	font-size: em(12pt)         // Test: pt to em
+	font-size: rem(1em)         // Test: em to rem
+	font-size: percent(1rem)    // Test: rem to %
+
+/* Test Font stack */
+div
+	font-family: $csshub_font-stack-arial
+	font-family: $csshub_font-stack-helvetica
+	font-family: $csshub_font-stack-lucida-grande
+	font-family: $csshub_font-stack-verdana
+	font-family: $csshub_font-stack-system
+	font-family: $csshub_font-stack-garamond
+	font-family: $csshub_font-stack-georgia
+	font-family: $csshub_font-stack-hoefler-text
+	font-family: $csshub_font-stack-consolas
+	font-family: $csshub_font-stack-courier-new
+	font-family: $csshub_font-stack-monaco
+
+/* Test ease-in, ease-out, ease-in-out */
+div
+	animation-timing-function: $csshub_ease-in-quad
+	animation-timing-function: $csshub_ease-in-cubic
+	animation-timing-function: $csshub_ease-in-quart
+	animation-timing-function: $csshub_ease-in-quint
+	animation-timing-function: $csshub_ease-in-sine
+	animation-timing-function: $csshub_ease-in-expo
+	animation-timing-function: $csshub_ease-in-circ
+	animation-timing-function: $csshub_ease-in-back
+
+	animation-timing-function: $csshub_ease-out-quad
+	animation-timing-function: $csshub_ease-out-cubic
+	animation-timing-function: $csshub_ease-out-quart
+	animation-timing-function: $csshub_ease-out-quint
+	animation-timing-function: $csshub_ease-out-sine
+	animation-timing-function: $csshub_ease-out-expo
+	animation-timing-function: $csshub_ease-out-circ
+	animation-timing-function: $csshub_ease-out-back
+
+	animation-timing-function: $csshub_ease-in-out-quad
+	animation-timing-function: $csshub_ease-in-out-cubic
+	animation-timing-function: $csshub_ease-in-out-quart
+	animation-timing-function: $csshub_ease-in-out-quint
+	animation-timing-function: $csshub_ease-in-out-sine
+	animation-timing-function: $csshub_ease-in-out-expo
+	animation-timing-function: $csshub_ease-in-out-circ
+	animation-timing-function: $csshub_ease-in-out-back
+
+/* Libary
+------------------------------------------------------------------------------ */
+
+/* Test border-radius */
+div
+	border-radius: 5px
+
+div
+	border-radius: 1px 2px 3px 4px
+
+/* Test border-image */
+div
+	border-image: url(../images/cssmix.png) 30 round round
+
+/* Test font-face */
+font-face('Roboto', 'Roboto/Roboto-Regular', '../fonts')
+
+/* Test font-face-inline */
+//font-face-inline('Roboto', 'Roboto/Roboto-Regular', '../fonts')
+
+/* Test clearfix */
+.clearfix
+	clearfix()
+
+div.test
+	clearfix()
+
+/* Test box-sizing */
+div
+	box-sizing: border-box
+
+/* Test box-shadow */
+div
+	box-shadow: 0 0 10px alpha(#000, .15)
+
+/* Test box-orient */
+div
+	box-orient: vertical
+
+/* Test box-flex-group */
+div
+	box-flex-group: 2
+
+/* Test box-ordinal-group */
+div
+	box-ordinal-group: 2
+
+/* Test box-align */
+div
+	box-align: baseline
+
+/* Test box-pack */
+div
+	box-pack: start
+
+/* Test box-direction */
+div
+	box-direction: reverse
+
+/* Test box-resize */
+div
+	box-resize: none
+
+/* Test opacity */
+div
+	opacity: .7
+
+/* Test triangle-up */
+div
+	triangle-up: 100px red
+
+/* Test triangle-down */
+div
+	triangle-down: 100px green
+
+/* Test triangle-left */
+div
+	triangle-left: 100px blue
+
+/* Test triangle-right */
+div
+	triangle-right: 100px yellow
+
+/* Test Extra small devices */
+@media $csshub_media-xs
+	body
+		background: green
+
+/* Test Small devices */
+@media $csshub_media-sm
+	body
+		background: red
+
+/* Test Medium devices */
+@media $csshub_media-md
+	body
+		background: blue
+
+/* Test Large devices */
+@media $csshub_media-lg
+	body
+		background: yellow
+
+/* Test animation */
+div
+	animation: all .2s ease
+
+/* Test animation-delay */
+div
+	animation-delay: 2s
+
+/* Test animation-direction */
+div
+	animation-direction: alternate
+
+/* Test animation-duration */
+div
+	animation-duration: 2s
+
+/* Test animation-fill-mode */
+div
+	animation-fill-mode: forwards
+
+/* Test animation-iteration-count */
+div
+	animation-iteration-count: 15
+
+/* Test animation-name */
+div
+	animation-name: spin
+
+/* Test animation-play-state */
+div
+	animation-play-state: paused
+
+/* Test animation-timing-function */
+div
+	animation-timing-function: linear
+
+/* Test transitions */
+div
+	transitions: all .2s ease
+
+/* Test transition-delay */
+div
+	transition-delay: 2s
+
+/* Test transition-duration */
+div
+	transition-duration: 2s
+
+/* Test transition-property */
+div
+	transition-property: width
+
+/* Test transition-timing-function */
+div
+	transition-timing-function: linear
+
+/* Test background-size */
+div
+	background-size: 100%
+
+/* Test background-clip */
+div
+	background-clip: content-box
+
+/* Test searchfield */
+div
+	appearance: searchfield
+
+/* Test user-select */
+div
+	user-select: auto
+
+/* Test backface-visibility */
+div
+	backface-visibility: hidden
+
+/* Test text-size-adjust */
+div
+	text-size-adjust: auto
+
+/* Test tab-size */
+div
+	tab-size: 2
+
+/* Test hyphens */
+div
+	hyphens: auto
+
+/* Test overflow-scrolling */
+div
+	overflow-scrolling: touch
+
+/* Test text-overflow */
+div
+	text-overflow: ellipsis
+
+/* Test font-smoothing */
+div
+	font-smoothing: antialiased
+
+/* Test perspective */
+div
+	perspective: 600
+
+/* Test perspective-origin */
+div
+	perspective-origin: 50% 50%
+
+/* Test filter */
+img
+	filter: blur(5px)
+
+/* Test keyframes [The result at the end of the file] */
+@keyframes animate-name
+	0%
+		color: red
+	100%
+		color: yellow
+
+/* Test hide text */
+div
+	hide-text()
+
+/* Test column-count */
+div
+	column-count: 2
+
+/* Test columns */
+div
+	columns: 200px auto
+
+/* Test column-gap */
+div
+	column-gap: 2em
+
+/* Test column-width */
+div
+	column-width: 200px
+
+/* Test column-rule */
+div
+	column-rule: 1px solid #ccc
+
+/* Test flex */
+div
+	flex: none
+
+/* Test flex-inline */
+div
+	flex-inline()
+
+/* Test order */
+div
+	order: 15
+
+/* Test flex-grow */
+div
+	flex-grow: 2
+
+/* Test flex-shrink */
+div
+	flex-shrink: 1
+
+/* Test flex-basis */
+div
+	flex-basis: auto
+
+/* Test flex-block */
+div
+	flex-block()
+
+/* Test align-self */
+div
+	align-self: auto
+
+/* Test align-items */
+div
+	align-items: center
+
+/* Test justify-content */
+div
+	justify-content: space-around
+
+/* Test flex-flow */
+div
+	flex-flow: row nowrap
+
+/* Test align-content */
+div
+	align-content: flex-start
+
+/* Test flex-direction */
+div
+	flex-direction: row
+
+/* Test flex-wrap */
+div
+	flex-wrap: wrap
+
+/* Test transform */
+div
+	transform: rotate(15deg)
+
+/* Test transform-origin */
+div
+	transform-origin: 100% 0
+
+/* Test transform-style */
+div
+	transform-style: flat
+
+/* Test transform rotate */
+div
+	-rotate: -90deg
+
+/* Test transform scale */
+div
+	-scale: 1.1
+
+/* Test transform translate */
+div
+	-translate: 50%, 50%
+
+/* Test transform translate3d */
+div
+	-translate3d: 50%, 50%, 50%
+
+/* Test transform translateHardware */
+div
+	-translateHardware: 50%, 50%
+
+/* Test ellipsis */
+div
+	text-ellipsis()
+
+/* Test image (Support: Retina Display, Data URI) */
+div
+	image: '../images/csshub.png'
+	image: '../images/csshub.png' !important
+
+/* Utilities
+------------------------------------------------------------------------------ */
+
+/* Test base normalize */
+normalize-base()
+
+/* Test embed normalize */
+normalize-embed()
+
+/* Test forms normalize */
+normalize-forms()
+
+/* Test groups normalize */
+normalize-groups()
+
+/* Test html5 normalize */
+normalize-html5()
+
+/* Test links normalize */
+normalize-links()
+
+/* Test tables normalize */
+normalize-tables()
+
+/* Test text normalize */
+normalize-text()
+
+/* Test css normalize */
+normalize-css()
+
+/* Test reset global */
+reset-global()
+
+/* Test reset html5 */
+reset-html5()
+
+/* Test reset nested */
+reset-nested()
+
+/* Test reset box model */
+div
+	reset-box-model()
+
+/* Test reset font */
+div
+	reset-font()
+
+/* Test reset body */
+body
+	reset-body()
+
+/* Test reset table */
+table
+	reset-table()
+
+/* Test reset table cell */
+table td
+	reset-table-cell()

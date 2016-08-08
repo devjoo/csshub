@@ -1,0 +1,37 @@
+//
+// Vendor Prefixes.
+//
+// -webkit- (Chrome, Safari, newer versions of Opera.)
+// -moz-    (Firefox)
+// -khtml-  (Konqueror)
+// -o-      (Old versions of Opera)
+// -ms-     (Internet Explorer)
+// official (Standard W3C)
+//
+vendor-prefixes(prop, args, only = null, ignore = null)
+	for prefix in only
+		if prefix == official
+			{prop}: args
+		else
+			-{prefix}-{prop}: args
+
+//
+// Vendor value Prefixes.
+//
+// -webkit- (Chrome, Safari, newer versions of Opera.)
+// -moz-    (Firefox)
+// -khtml-  (Konqueror)
+// -o-      (Old versions of Opera)
+// -ms-     (Internet Explorer)
+// official (Standard W3C)
+//
+vendor-value-prefixes(arg, only = null, ignore = null)
+	if current-property
+		for prefix in only
+			if prefix == official
+				arg
+			else
+				add-property(current-property[0], '-%s-%s' % (prefix arg))
+		arg
+	else
+		error('vendor-value-prefixes(...) must be used within a property')

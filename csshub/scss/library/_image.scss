@@ -1,0 +1,31 @@
+//
+// Support image and Retina and Data URI.
+//
+// @config less
+// ------------------------------------------------------
+// @csshub_support-retina: true; - Support retina display
+// @csshub_data-uri: false; - Enable data uri
+//
+@mixin image($image, $ext, $important: null) {
+	@if $csshub_data-uri {
+		background-image: url(#{$image + '.' + $ext}) $important;
+	} @else {
+		background-image: url(#{$image + '.' +  $ext}) $important;
+	}
+
+	@if $csshub_support-retina {
+		@media
+		(-webkit-min-device-pixel-ratio: 2),
+		(   min--moz-device-pixel-ratio: 2),
+		(     -o-min-device-pixel-ratio: 2/1),
+		(        min-device-pixel-ratio: 2),
+		(                min-resolution: 192dpi),
+		(                min-resolution: 2dppx) {
+			@if $csshub_data-uri {
+				background-image: url(#{$image + '@2x.' +  $ext}) $important;
+			} @else {
+				background-image: url(#{$image + '@2x.' + $ext}) $important;
+			}
+		}
+	}
+}

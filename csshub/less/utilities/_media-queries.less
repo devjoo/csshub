@@ -1,0 +1,35 @@
+//
+// Extra small devices (phones, than 768px)
+//
+.media-xs(@args) {
+	@media(max-width: @csshub_device-xs-max) {
+		@args();
+	}
+};
+
+//
+// Small devices (tablets, 768px and up)
+//
+.media-sm(@args) {
+	@media(min-width: @csshub_device-sm-min) {
+		@args();
+	}
+};
+
+//
+// Medium devices (desktops, 992px and up)
+//
+.media-md(@args) {
+	@media(min-width: @csshub_device-md-min) {
+		@args();
+	}
+};
+
+//
+// Large devices (large desktops, 1200px and up)
+//
+.media-lg(@args) {
+	@media(min-width: @csshub_device-lg-min) {
+		@args();
+	}
+};

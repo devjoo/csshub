@@ -1,0 +1,12 @@
+//
+// Vendor "opacity" support.
+//
+@mixin opacity($arg) {
+	@include vendor-prefixes(opacity, $arg, webkit moz official);
+
+	@if $csshub_support-for-ie {
+		$opperc: percentage($arg);
+		filter: alpha(opacity=$opperc);
+		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=$opperc);
+	}
+}

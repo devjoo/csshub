@@ -1,0 +1,16 @@
+//
+// Provides an easy way to include a clearfix for containing floats.
+//
+%clearfix {
+	@if $csshub_support-for-ie {
+		*zoom: 1;
+	}
+
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}

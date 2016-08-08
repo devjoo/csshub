@@ -1,0 +1,97 @@
+//
+// Vendor "calc" support.
+//
+@mixin calc($prop, $expr, $fallback: false) {
+	@if $fallback {
+		#{$prop}: $fallback;
+	}
+
+	@include vendor-value-prefixes($prop, #{'calc(' + $expr + ')'}, webkit moz official);
+}
+
+//
+// Vendor "appearance" support.
+//
+@mixin appearance($args...) {
+	@include vendor-prefixes(appearance, $args, webkit moz o official)
+}
+
+//
+// Vendor "user-select" support.
+//
+@mixin user-select($args...) {
+	@include vendor-prefixes(user-select, $args, webkit moz ms official)
+}
+
+//
+// Vendor "backface-visibility" support.
+//
+@mixin backface-visibility($args...) {
+	@include vendor-prefixes(backface-visibility, $args, webkit moz official)
+}
+
+//
+// Vendor "tab-size" support.
+//
+@mixin tab-size($args...) {
+	@include vendor-prefixes(tab-size, $args, o moz official)
+}
+
+//
+// Vendor "overflow-scrolling" support.
+//
+@mixin overflow-scrolling($args...) {
+	@include vendor-prefixes(overflow-scrolling, $args, webkit moz official)
+}
+
+//
+// Vendor "overflow-scrolling" support.
+//
+@mixin font-smoothing($args...) {
+	@include vendor-prefixes(font-smoothing, $args, webkit)
+}
+
+//
+// Vendor "filter" support.
+//
+// filter: url(#blur); /* Firefox needs SVG */
+// filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5') /* IE */
+//
+@mixin filter($args...) {
+	@include vendor-prefixes(filter, $args, webkit moz o ms official)
+}
+
+//
+// Support placeholder.
+//
+@mixin placeholder {
+	&::-webkit-input-placeholder,
+	&:-moz-placeholder,
+	&::-moz-placeholder,
+	&:-ms-input-placeholder {
+		@content;
+	}
+}
+
+//
+// Support viewport.
+//
+@mixin viewport {
+	@viewport         { @content; }
+	@-o-viewport      { @content; }
+	@-ms-viewport     { @content; }
+	@-moz-viewport    { @content; }
+	@-webkit-viewport { @content; }
+}
+
+//
+// Support full-screen.
+//
+@mixin full-screen {
+	&:-webkit-full-screen,
+	&:-moz-full-screen,
+	&:-ms-fullscreen,
+	&:fullscreen {
+		@content;
+	}
+}

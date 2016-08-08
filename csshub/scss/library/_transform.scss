@@ -1,0 +1,70 @@
+//
+// Vendor "transform" support.
+//
+@mixin transform($args...) {
+	@include vendor-prefixes(transform, $args, webkit moz ms o official)
+}
+
+//
+// Vendor "transform-origin" support.
+//
+@mixin transform-origin($args...) {
+	@include vendor-prefixes(transform-origin, $args, webkit moz ms o official)
+}
+
+//
+// Vendor "transform-style" support.
+//
+@mixin transform-style($args...) {
+	@include vendor-prefixes(transform-style, $args, webkit moz ms o official)
+}
+
+//
+// Transform Rotate.
+//
+@mixin -rotate($args...) {
+	@include transform(rotate($args))
+}
+
+//
+// Transform Scale.
+//
+@mixin -scale($args...) {
+	@include transform(scale($args))
+}
+
+//
+// Transform Translate.
+//
+@mixin -translate($args...) {
+	@include transform(translate($args))
+}
+
+//
+// Transform Translate3D.
+//
+@mixin -translate3d($args...) {
+	@include transform(translate3d($args))
+}
+
+//
+// Transform Translate Hardware.
+//
+@mixin -translateHardware($x, $y) {
+	@include -translate($x, $y);
+	@include -translate3d($x, $y, 0);
+}
+
+//
+// Vendor "perspective" support.
+//
+@mixin perspective($args...) {
+	@include vendor-prefixes(perspective, $args, webkit moz ms official)
+}
+
+//
+// Vendor "perspective-origin" support.
+//
+@mixin perspective-origin($args...) {
+	@include vendor-prefixes(perspective-origin, $args, webkit moz ms official)
+}

@@ -1,0 +1,86 @@
+//
+// Injection JavaScript
+// csshub.convertUnit(str, ignore, base)  // The search and convert units
+// csshub.index(list, value)              // Returns the position of a value within a list.
+//
+
+@CSSHub: `(function() {
+
+	// Search to regular expression
+	var unitRegExr = /([px|em|pt|rem|percent]+)\(+([0-9\.]+)+([px|em|pt|rem|\%]+)\)+/g;
+
+	// Global object
+	this.csshub = {
+
+		// The search and convert units
+		convertUnit: function(str, ignore, base) {
+
+			// This check css aurument
+			if(!str) return;
+
+			var topercent = function(val, fromUnit, base) {
+
+				var $return  = 0,
+					val      = parseFloat(val),
+					base     = parseInt(base, 10);
+
+				// 1em == 16px == 0.17in == 12pt == 1pc == 4.2mm == 0.42cm == 1rem
+				switch(fromUnit) {
+					case 'px': $return = (base / 16) * (val * 100) / 16; break;
+					case 'em': $return = ((val * 100) * 16) / base; break;
+					case 'pt': $return = (((val * 100) / 75) * 100) / base; break;
+					case 'rem': $return = (val * 100 * base) / 16; break;
+					case '%': $return = (val * 16) / base; break;
+					default: $return = val;
+				}
+
+				return $return;
+			};
+
+			// Convert selected unit in unit
+			var unit = function(toUnit, val, fromUnit, defaultBase) {
+				var $return = 0;
+
+				if(toUnit !== fromUnit) {
+					switch(toUnit) {
+						case 'px': $return = topercent(val, fromUnit, defaultBase) / 100 * 16; break;
+						case 'em': $return = topercent(val, fromUnit, defaultBase) / 100; break;
+						case 'pt': $return = topercent(val, fromUnit, defaultBase) / 100 * 12; break;
+						case 'rem': $return = $return = topercent(val, fromUnit, defaultBase) / 100; break;
+						case 'percent': $return = $return = topercent(val, fromUnit, defaultBase); break;
+						default: $return = val;
+					}
+				} else {
+					$return = val;
+				}
+
+				return $return + (toUnit != 'percent' ? toUnit : '%');
+			};
+
+			var self = this, defaultBase = 16,
+
+			// Check the syntax of the basic amount
+			checkBase = base.match(/^(\d+(?:\.\d+)?)(px|pt|\%)$/);
+
+			// Set reference value
+			if(ignore === 'true' || !checkBase instanceof Array) {
+				base = defaultBase;
+			} else {
+				base = parseFloat(unit('px', checkBase[1], checkBase[2], defaultBase));
+			}
+
+			return(str.replace(unitRegExr, function(_, toUnit, value, fromUnit) {
+				return unit(toUnit, value, fromUnit, base);
+			}));
+		},
+
+		// Returns the position of a value within a list.
+		index: function(list, value) {
+			var list = list.replace(new RegExp("\\[|\\]|\,", 'g'),"");
+			var index = (list.split(' ')).indexOf(value) + 1;
+			return(index);
+		}
+	};
+
+	return(this);
+})()`;

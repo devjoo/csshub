@@ -1,0 +1,62 @@
+//
+// Vendor "animation" support.
+//
+@mixin animation($args...) {
+	@include vendor-prefixes(animation, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-delay" support.
+//
+@mixin animation-delay($args...) {
+	@include vendor-prefixes(animation-delay, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-direction" support.
+//
+@mixin animation-direction($args...) {
+	@include vendor-prefixes(animation-direction, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-duration" support.
+//
+@mixin animation-duration($args...) {
+	@include vendor-prefixes(animation-duration, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-fill-mode" support.
+//
+@mixin animation-fill-mode($args...) {
+	@include vendor-prefixes(animation-fill-mode, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-iteration-count" support.
+//
+@mixin animation-iteration-count($args...) {
+	@include vendor-prefixes(animation-iteration-count, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-name" support.
+//
+@mixin animation-name($args...) {
+	@include vendor-prefixes(animation-name, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-play-state" support.
+//
+@mixin animation-play-state($args...) {
+	@include vendor-prefixes(animation-play-state, $args, webkit moz o official)
+}
+
+//
+// Vendor "animation-timing-function" support.
+//
+@mixin animation-timing-function($args...) {
+	@include vendor-prefixes(animation-timing-function, $args, webkit moz o official)
+}

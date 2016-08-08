@@ -1,0 +1,92 @@
+//
+// Vendor "calc" support.
+//
+calc(expr, fallback = null)
+	if current-property
+		if fallback
+			add-property(current-property[0], '%s' % (fallback))
+		for prefix in webkit moz
+			add-property(current-property[0], '-%s-calc(%s)' % (prefix expr))
+		'calc(%s)' % expr
+	else
+		error('calc(...) must be used within a property')
+
+//
+// Vendor "appearance" support.
+//
+appearance()
+	vendor-prefixes('appearance', arguments, only: webkit moz o official)
+
+//
+// Vendor "user-select" support.
+//
+user-select()
+	vendor-prefixes('user-select', arguments, only: webkit moz ms official)
+
+//
+// Vendor "backface-visibility" support.
+//
+backface-visibility()
+	vendor-prefixes('backface-visibility', arguments, only: webkit moz official)
+
+//
+// Vendor "tab-size" support.
+//
+tab-size()
+	vendor-prefixes('tab-size', arguments, only: o moz official)
+
+//
+// Vendor "overflow-scrolling" support.
+//
+overflow-scrolling()
+	vendor-prefixes('overflow-scrolling', arguments, only: webkit moz official)
+
+//
+// Vendor "overflow-scrolling" support.
+//
+font-smoothing()
+	vendor-prefixes('font-smoothing', arguments, only: webkit)
+
+//
+// Vendor "filter" support.
+//
+// filter: url(#blur); /* Firefox needs SVG */
+// filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5') /* IE */
+//
+filter()
+	vendor-prefixes('filter', arguments, only: webkit moz o ms official)
+
+//
+// Support placeholder.
+//
+placeholder()
+	&::-webkit-input-placeholder
+	&:-moz-placeholder
+	&::-moz-placeholder
+	&:-ms-input-placeholder
+		{block}
+
+//
+// Support viewport.
+//
+viewport()
+	@viewport
+		{block}
+	@-o-viewport
+		{block}
+	@-ms-viewport
+		{block}
+	@-moz-viewport
+		{block}
+	@-webkit-viewport
+		{block}
+
+//
+// Support full-screen.
+//
+full-screen()
+	&:-webkit-full-screen
+	&:-moz-full-screen
+	&:-ms-fullscreen
+	&:fullscreen
+		{block}

@@ -1,0 +1,9 @@
+//
+// Vendor "opacity" support.
+//
+opacity()
+	vendor-prefixes('opacity', arguments, only: webkit moz official)
+	if $csshub_support-for-ie
+		opperc = percentage(arguments)
+		filter: 'alpha(opacity=%s)' % opperc
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(opacity=%s)' % opperc

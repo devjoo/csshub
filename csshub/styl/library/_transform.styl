@@ -1,0 +1,60 @@
+//
+// Vendor "transform" support.
+//
+transform()
+	vendor-prefixes('transform', arguments, only: webkit moz ms o official)
+
+//
+// Vendor "transform-origin" support.
+//
+transform-origin()
+	vendor-prefixes('transform-origin', arguments, only: webkit moz ms o official)
+
+//
+// Vendor "transform-style" support.
+//
+transform-style()
+	vendor-prefixes('transform-style', arguments, only: webkit moz ms o official)
+
+//
+// Transform Rotate.
+//
+-rotate()
+	transform: rotate(arguments)
+
+//
+// Transform Scale.
+//
+-scale()
+	transform: scale(arguments)
+
+//
+// Transform Translate.
+//
+-translate()
+	transform: translate(arguments)
+
+//
+// Transform Translate3D.
+//
+-translate3d()
+	transform: translate3d(arguments)
+
+//
+// Transform Translate Hardware.
+//
+-translateHardware(x, y)
+	-translate: x, y
+	-translate3d: x, y, 0
+
+//
+// Vendor "perspective" support.
+//
+perspective()
+	vendor-prefixes('perspective', arguments, only: webkit moz ms official)
+
+//
+// Vendor "perspective-origin" support.
+//
+perspective-origin()
+	vendor-prefixes('perspective-origin', arguments, only: webkit moz ms official)

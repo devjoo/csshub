@@ -1,0 +1,39 @@
+//
+// CSS Triangle Up
+//
+.triangle-up(@width, @color) {
+	.size(0);
+	border-left: @width solid transparent;
+	border-right: @width solid transparent;
+	border-bottom: @width solid @color;
+}
+
+//
+// CSS Triangle Down
+//
+.triangle-down(@width, @color) {
+	.size(0);
+	border-left: @width solid transparent;
+	border-right: @width solid transparent;
+	border-top: @width solid @color;
+}
+
+//
+// CSS Triangle Left
+//
+.triangle-left(@width, @color) {
+	.size(0);
+	border-top: @width solid transparent;
+	border-bottom: @width solid transparent;
+	border-left: @width solid @color;
+}
+
+//
+// CSS Triangle Right
+//
+.triangle-right(@width, @color) {
+	.size(0);
+	border-top: @width solid transparent;
+	border-bottom: @width solid transparent;
+	border-right:@width solid @color;
+}

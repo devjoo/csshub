@@ -1,0 +1,38 @@
+//
+// Mixin for Offset Positioning
+//
+.-position(@position, @args) {
+	position: @position;
+
+	.each(top right bottom left, {
+		@i: ~`csshub.index("@{args}", "@{value}")`;
+
+		@count: length(@args);
+		@type: isnumber(extract(@args, @i + 1));
+
+		.if(~`@{i} && @{i} + 1 <= @{count} && @{type}`, {
+			@{value}: extract(@args, @i + 1);
+		});
+	});
+}
+
+//
+// Mixin for absolute positioning
+//
+.absolute(@args) {
+	.-position(absolute, @args);
+}
+
+//
+// Mixin for fixed positioning
+//
+.fixed(@args) {
+	.-position(fixed, @args);
+}
+
+//
+// Mixin for relative positioning
+//
+.relative(@args) {
+	.-position(relative, @args);
+}

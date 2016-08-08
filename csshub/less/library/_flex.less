@@ -1,0 +1,124 @@
+//
+// Vendor "flex-block" support.
+//
+.flex-block() {
+	@only: webkit, moz;
+	.vendor-value-prefixes(display, box, @only);
+	.vendor-value-prefixes(display, flexbox, ms);
+
+	@only-flex: webkit, official;
+	.vendor-value-prefixes(display, flex, @only-flex);
+}
+
+//
+// Vendor "flex-inline" support.
+//
+.flex-inline() {
+	@only: ms, official;
+	.vendor-value-prefixes(display, inline-flex, webkit);
+	.vendor-value-prefixes(display, inline-flexbox, @only);
+}
+
+//
+// Vendor "flex-flow" support.
+//
+.flex-flow(@direction: row, @wrap: nowrap) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(flex-flow, @direction @wrap, @only);
+	.vendor-prefixes(flex-direction, @direction, ms);
+	.vendor-prefixes(flex-wrap, @wrap, ms);
+}
+
+//
+// Vendor "align-content" support.
+//
+.align-content(@alignment) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(align-content, @alignment, @only);
+}
+
+//
+// Vendor "flex-direction" support.
+//
+.flex-direction(@direction: row) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(flex-direction, @direction, @only);
+}
+
+//
+// Vendor "flex-wrap" support.
+//
+.flex-wrap(@wrap: nowrap) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(flex-wrap, @wrap, @only);
+}
+
+//
+// Vendor "justify-content" support.
+//
+.justify-content(@justification) {
+	@only: webkit, moz;
+	.vendor-prefixes(box-pack, @justification, @only);
+	.vendor-prefixes(flex-pack, replace(@justification, "flex-", ""), ms);
+	@only-justify-content: webkit, official;
+	.vendor-prefixes(justify-content, @justification, @only-justify-content);
+}
+
+//
+// Vendor "align-items" support.
+//
+.align-items(@mode) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(box-align, @mode, @only);
+	.vendor-prefixes(align-items, @mode, @only);
+}
+
+//
+// Vendor "flex" support.
+//
+.flex(@args: none) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(flex, @args, @only);
+
+}
+
+//
+// Vendor "order" support.
+//
+.order(@order: 0) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(box-ordinal-group, @order, @only);
+	.vendor-prefixes(flex-order, @order, @only);
+}
+
+//
+// Vendor "flex-grow" support.
+//
+.flex-grow(@grow: 1) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(flex-grow, @grow, @only);
+}
+
+//
+// Vendor "flex-shrink" support.
+//
+.flex-shrink(@shrink: 1) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(flex-shrink, @shrink, @only);
+}
+
+//
+// Vendor "flex-basis" support.
+//
+.flex-basis(@basis: auto) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(flex-basis, @basis, @only);
+}
+
+//
+// Vendor "align-self" support.
+//
+.align-self(@align: auto) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(align-self, @align, @only);
+}

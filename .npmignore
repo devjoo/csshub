@@ -1,0 +1,12 @@
+# Ignore Folders
+#------------------------------------------
+node_modules
+res
+
+# Ignore file and file extensions
+#------------------------------------------
+*.orig
+.idea
+*.node
+.DS_Store
+*.log

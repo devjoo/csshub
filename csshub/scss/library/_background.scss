@@ -1,0 +1,13 @@
+//
+// Vendor "background-size" support.
+//
+@mixin background-size($args...) {
+	@include vendor-prefixes(background-size, $args, webkit moz o official)
+}
+
+//
+// Vendor "background-clip" support.
+//
+@mixin background-clip($args...) {
+	@include vendor-prefixes(background-clip, $args, webkit moz o official)
+}

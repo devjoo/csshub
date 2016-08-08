@@ -1,0 +1,40 @@
+//
+// Vendor Prefixes.
+//
+// -webkit- (Chrome, Safari, newer versions of Opera.)
+// -moz-    (Firefox)
+// -khtml-  (Konqueror)
+// -o-      (Old versions of Opera)
+// -ms-     (Internet Explorer)
+// official (Standard W3C)
+//
+@mixin vendor-prefixes($prop, $args, $only: (), $ignore: null) {
+	@each $prefix in $only {
+		@if $prefix != 'official' {
+			#{'-' + $prefix + '-' + $prop}: $args;
+		} @else {
+			#{$prop}: $args;
+		}
+	}
+}
+
+//
+// Vendor value Prefixes.
+//
+// -webkit- (Chrome, Safari, newer versions of Opera.)
+// -moz-    (Firefox)
+// -khtml-  (Konqueror)
+// -o-      (Old versions of Opera)
+// -ms-     (Internet Explorer)
+// official (Standard W3C)
+//
+@mixin vendor-value-prefixes($prop, $args, $only: (), $ignore: null) {
+	$return: ();
+	@each $prefix in $only {
+		@if $prefix != 'official' {
+			#{$prop}: #{'-' + $prefix + '-' + $args};
+		} @else {
+			#{$prop}: $args;
+		}
+	}
+}

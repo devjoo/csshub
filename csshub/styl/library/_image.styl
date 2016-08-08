@@ -1,0 +1,20 @@
+//
+// Support image and Retina and Data URI.
+//
+// @config stylus
+// ------------------------------------------------------
+// $csshub_support-retina: true; - Support retina display
+// $csshub_data-uri: false; - Enable data uri
+//
+image(file, important = null)
+	background-image: url(file) important
+	if $csshub_support-retina
+		ext = extname(file)
+		@media (-webkit-min-device-pixel-ratio: 2),
+				(  min--moz-device-pixel-ratio: 2),
+				(  -o-min-device-pixel-ratio: 2/1),
+				(       min-device-pixel-ratio: 2),
+				(          min-resolution: 192dpi),
+				(           min-resolution: 2dppx)
+			background-image: url(pathjoin(dirname(file), basename(file, ext) + '@2x' + ext)) important
+			background-size: cover

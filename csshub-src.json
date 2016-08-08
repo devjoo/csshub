@@ -1,0 +1,11 @@
+{
+	"styl": [
+		"./test/example/*.styl"
+	],
+	"less": [
+		"./test/example/*.less"
+	],
+	"sass": [
+		"./test/example/*.scss"
+	]
+}

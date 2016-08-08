@@ -1,0 +1,35 @@
+//
+// Mixin for Offset Positioning
+//
+@mixin position($position, $args) {
+	@each $item in top right bottom left {
+		$i: index($args, $item);
+
+		@if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
+			#{$item}: nth($args, $i + 1);
+		}
+	}
+
+	position: $position;
+}
+
+//
+// Mixin for absolute positioning
+//
+@mixin absolute($args) {
+	@include position(absolute, $args);
+}
+
+//
+// Mixin for fixed positioning
+//
+@mixin fixed($args) {
+	@include position(fixed, $args);
+}
+
+//
+// Mixin for relative positioning
+//
+@mixin relative($args) {
+	@include position(relative, $args);
+}

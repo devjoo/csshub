@@ -1,0 +1,9 @@
+// Override function url to embedurl
+if $csshub_data-uri
+	url = embedurl
+
+// Media Queries devices
+$csshub_media-xs = '(max-width: %s)' % $csshub_device-xs-max
+$csshub_media-sm = '(min-width: %s)' % $csshub_device-sm-min
+$csshub_media-md = '(min-width: %s)' % $csshub_device-md-min
+$csshub_media-lg = '(min-width: %s)' % $csshub_device-lg-min

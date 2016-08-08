@@ -1,0 +1,56 @@
+//
+// Vendor "box-sizing" support.
+//
+box-sizing()
+	vendor-prefixes('box-sizing', arguments, only: webkit moz official)
+
+//
+// Vendor "box-shadow" support.
+//
+box-shadow()
+	vendor-prefixes('box-shadow', arguments, only: webkit moz o official)
+
+//
+// Vendor "box-orient" support.
+//
+box-orient()
+	vendor-prefixes('box-orient', arguments, only: webkit moz official)
+
+//
+// Vendor "box-flex-group" support.
+//
+box-flex-group()
+	vendor-prefixes('box-flex-group', arguments, only: webkit moz official)
+
+//
+// Vendor "box-ordinal-group" support.
+//
+box-ordinal-group()
+	vendor-prefixes('box-ordinal-group', arguments, only: webkit moz ms official)
+
+//
+// Vendor "box-align" support.
+//
+box-align()
+	vendor-prefixes('box-align', arguments, only: webkit moz ms official)
+
+//
+// Vendor "box-pack" support.
+//
+box-pack()
+	vendor-prefixes('box-pack', arguments, only: webkit moz ms official)
+
+//
+// Vendor "box-direction" support.
+//
+box-direction()
+	vendor-prefixes('box-direction', arguments, only: webkit moz ms official)
+
+//
+// Box Resize
+//
+box-resize(resize = none)
+	resize: resize
+	overflow: auto
+	min-width: 50px
+	min-height: 50px

@@ -1,0 +1,15 @@
+//
+// Vendor "background-size" support.
+//
+.background-size(@args) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(background-size, @args, @only);
+}
+
+//
+// Vendor "background-clip" support.
+//
+.background-clip(@args) {
+	@only: webkit, official;
+	.vendor-prefixes(background-clip, @args, @only);
+}

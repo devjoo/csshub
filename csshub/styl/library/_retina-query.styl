@@ -1,0 +1,13 @@
+//
+// For including high-res graphics, but only for screens that can make use of them. "Retina" being "2x":
+//
+retina-query(media = all, density = 1)
+	$_media = join(' ', media)
+	$_query =  $_media + ' and (-webkit-min-device-pixel-ratio: ' + density + '), '
+	$_query += $_media + ' and (min--moz-device-pixel-ratio: ' + density + '), '
+	$_query += $_media + ' and (-o-min-device-pixel-ratio: ' + density + '/1), '
+	$_query += $_media + ' and (min-device-pixel-ratio: ' + density + '), '
+	$_query += $_media + ' and (min-resolution: ' + ceil(density * 96) + 'dpi), '
+	$_query += $_media + ' and (min-resolution: ' + density + 'dppx)'
+	@media $_query
+		{block}

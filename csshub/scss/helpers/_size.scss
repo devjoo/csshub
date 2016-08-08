@@ -1,0 +1,103 @@
+//
+// Size WH
+//
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+// Helper size
+@mixin size($size) {
+	$height: nth($size, 1);
+	$width: $height;
+
+	@if length($size) > 1 {
+		$height: nth($size, 2);
+	}
+
+	width: $width;
+	height: $height;
+}
+
+// @api: private
+@function -to-percentage($arg, $default-unit, $ignore: false) {
+	$unit: unit($arg);
+	$arg: strip-unit($arg);
+
+	// Set default unit
+	@if $unit == '' {
+		$unit: $default-unit;
+	}
+
+	$defaultBase: 16;
+
+	@if index('px' 'pt' '%', unit($csshub_font-size)) and $ignore == false {
+		$defaultBase: -convert-to-unit($csshub_font-size, 'px', true, true);
+	}
+
+	@if $unit == 'px' {
+		$arg: ($defaultBase / 16) * ($arg * 100) / 16;
+	}
+	@else if $unit == 'em' {
+		$arg: (($arg * 100) * 16) / $defaultBase;
+	}
+	@else if $unit == 'rem' {
+		$arg: ($arg * 100 * $defaultBase) / 16;
+	}
+	@else if $unit == 'pt' {
+		$arg: ((($arg * 100) / 75) * 100) / $defaultBase;
+	}
+	@else if $unit == '%' {
+		$arg: ($arg * 16) / $defaultBase;
+	}
+
+	@return $arg;
+}
+
+// @api: private
+@function -convert-to-unit($arg, $unit, $ignore: false, $is_unit: false) {
+	$percent: -to-percentage($arg, $unit, $ignore);
+
+	@if $unit == 'px' {
+		$arg: $percent / 100 * 16;
+	}
+	@else if $unit == 'em' {
+		$arg: $percent / 100;
+	}
+	@else if $unit == 'rem' {
+		$arg: $percent / 100;
+	}
+	@else if $unit == 'pt' {
+		$arg: $percent / 100 * 12;
+	}
+	@else if $unit == '%' {
+		$arg: $percent;
+	}
+
+	@if $is_unit {
+		@return $arg;
+	} @else {
+		@return unquote($arg + $unit);
+	}
+}
+
+// Default: 100% == 16px == 1em == 12pt == 1rem
+@function px($arg, $ignore: false) {
+	@return -convert-to-unit($arg, 'px', $ignore)
+}
+
+@function pt($arg, $ignore: false) {
+	@return -convert-to-unit($arg, 'pt', $ignore)
+}
+
+@function em($arg, $ignore: false) {
+	@return -convert-to-unit($arg, 'em', $ignore)
+}
+
+@function rem($arg, $ignore: false) {
+	@return -convert-to-unit($arg, 'rem', $ignore)
+}
+
+@function percent($arg, $ignore: false) {
+	@return -convert-to-unit($arg, '%', $ignore)
+}

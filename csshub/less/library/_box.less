@@ -1,0 +1,73 @@
+//
+// Vendor "box-sizing" support.
+//
+.box-sizing(@args) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(box-sizing, @args, @only);
+}
+
+//
+// Vendor "box-shadow" support.
+//
+.box-shadow(@args: none) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(box-shadow, @args, @only);
+}
+
+//
+// Vendor "box-orient" support.
+//
+.box-orient(@args) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(box-orient, @args, @only);
+}
+
+//
+// Vendor "box-flex-group" support.
+//
+.box-flex-group(@args) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(box-flex-group, @args, @only);
+}
+
+//
+// Vendor "box-ordinal-group" support.
+//
+.box-ordinal-group(@args) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(box-ordinal-group, @args, @only);
+}
+
+//
+// Vendor "box-align" support.
+//
+.box-align(@args) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(box-align, @args, @only);
+}
+
+//
+// Vendor "box-pack" support.
+//
+.box-pack(@args) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(box-align, @args, @only);
+}
+
+//
+// Vendor "box-direction" support.
+//
+.box-direction(@args) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(box-align, @args, @only);
+}
+
+//
+// Box Resize
+//
+.box-resize(@resize: none) {
+	resize: @resize;
+	overflow: auto;
+	min-width: 50px;
+	min-height: 50px;
+}

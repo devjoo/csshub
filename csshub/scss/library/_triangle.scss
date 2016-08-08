@@ -1,0 +1,39 @@
+//
+// CSS Triangle Up
+//
+@mixin triangle-up($width, $color) {
+	@include size(0);
+	border-left: $width solid transparent;
+	border-right: $width solid transparent;
+	border-bottom: $width solid $color;
+}
+
+//
+// CSS Triangle Down
+//
+@mixin triangle-down($width, $color) {
+	@include size(0);
+	border-left: $width solid transparent;
+	border-right: $width solid transparent;
+	border-top: $width solid $color;
+}
+
+//
+// CSS Triangle Left
+//
+@mixin triangle-left($width, $color) {
+	@include size(0);
+	border-top: $width solid transparent;
+	border-bottom: $width solid transparent;
+	border-left: $width solid $color;
+}
+
+//
+// CSS Triangle Right
+//
+@mixin triangle-right($width, $color) {
+	@include size(0);
+	border-top: $width solid transparent;
+	border-bottom: $width solid transparent;
+	border-right: $width solid $color;
+}

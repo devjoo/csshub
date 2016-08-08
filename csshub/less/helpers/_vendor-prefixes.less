@@ -1,0 +1,41 @@
+//
+// Vendor Prefixes.
+//
+// -webkit- (Chrome, Safari, newer versions of Opera.)
+// -moz-    (Firefox)
+// -khtml-  (Konqueror)
+// -o-      (Old versions of Opera)
+// -ms-     (Internet Explorer)
+// official (Standard W3C)
+//
+.vendor-prefixes(@prop, @args, @only: false, @ignore: false) {
+	.each(@only, {
+		.if-else(~`"@{value}" == "official"`, {
+			@{prop}: @args;
+		}, {
+			-@{value}-@{prop}: @args;
+		});
+	});
+
+}
+
+//
+// Vendor value Prefixes.
+//
+// -webkit- (Chrome, Safari, newer versions of Opera.)
+// -moz-    (Firefox)
+// -khtml-  (Konqueror)
+// -o-      (Old versions of Opera)
+// -ms-     (Internet Explorer)
+// official (Standard W3C)
+//
+.vendor-value-prefixes(@prop, @support, @only: false, @ignore: false) {
+	.each(@only, {
+		.if-else(~`"@{value}" == "official"`, {
+			@{prop}: @support;
+		}, {
+			@{prop}: ~'-@{value}-@{support}';
+		});
+	});
+
+}

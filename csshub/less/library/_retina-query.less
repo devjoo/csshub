@@ -1,0 +1,14 @@
+//
+// For including high-res graphics, but only for screens that can make use of them. "Retina" being "2x":
+//
+.retina-query(@query: all, @density: 1, @args) {
+	@dpi: ceil((@density * 96));
+	@media  @query and (-webkit-min-device-pixel-ratio: @density),
+			@query and (min--moz-device-pixel-ratio: @density),
+			@query and (-o-min-device-pixel-ratio: @density/1),
+			@query and (min-device-pixel-ratio: @density),
+			@query and (min-resolution: ~'@{dpi}dpi'),
+			@query and (min-resolution: ~'@{density}dppx') {
+		@args();
+	}
+}

@@ -1,0 +1,34 @@
+//
+// Vendor "columns" support.
+//
+@mixin columns($args...) {
+	@include vendor-prefixes(columns, $args, webkit moz official)
+}
+
+//
+// Vendor "column-count" support.
+//
+@mixin column-count($args...) {
+	@include vendor-prefixes(columns, $args, webkit moz official)
+}
+
+//
+// Vendor "column-gap" support.
+//
+@mixin column-gap($args...) {
+	@include vendor-prefixes(column-gap, $args, webkit moz official)
+}
+
+//
+// Vendor "column-width" support.
+//
+@mixin column-width($args...) {
+	@include vendor-prefixes(column-width, $args, webkit moz official)
+}
+
+//
+// Vendor "column-rule" support.
+//
+@mixin column-rule($args...) {
+	@include vendor-prefixes(column-rule, $args, webkit moz official)
+}

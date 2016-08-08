@@ -1,0 +1,52 @@
+//
+// The @font-face rule allows custom fonts to be loaded on a webpage. Once added to a stylesheet, the rule instructs the browser to download the font from where it is hosted, then display it as specified in the CSS.
+
+//
+// Formats:
+// TTF   - Works in most browsers except IE and iPhone.
+// EOT   - IE only.
+// WOFF  - Compressed, emerging standard.
+// WOFF2 - New Compressed, emerging standard.
+// SVG   - iPhone/iPad.
+//
+font-face(family, path, folder = '/fonts/', weight = normal, style = normal)
+	folder = unquote(folder)
+	path   = unquote(path)
+	family = unquote(family)
+	@font-face
+		font-family: family;
+		src: s('url(%s/%s.eot)', folder, path)
+		src: s('url(%s/%s.eot?#iefix)', folder, path) format('embedded-opentype'),
+			 s('url(%s/%s.woff)', folder, path) format('woff'),
+			 s('url(%s/%s.woff2)', folder, path) format('woff2'),
+			 s('url(%s/%s.ttf)', folder, path) format('truetype'),
+			 s('url(%s/%s.svg#%s)', folder, path, family) format('svg')
+		font-weight: weight
+		font-style: style
+
+//
+// Formats:
+// TTF   - Works in most browsers except IE  and iPhone.
+// EOT   - IE only.
+// WOFF  - Compressed, emerging standard.
+// WOFF2 - New Compressed, emerging standard.
+// SVG   - iPhone/iPad.
+//
+font-face-inline(family, path, folder = '/fonts/', weight = normal, style = normal)
+	folder = unquote(folder)
+	path   = unquote(path)
+	family = unquote(family)
+	@font-face
+		font-family: family
+		src: s('url(%s/%s.eot?)', folder, path) format('embedded-opentype')
+
+	@font-face
+		font-family: family;
+		src: embedurl(s('%s/%s.eot', folder, path))
+		src: embedurl(s('%s/%s.eot?#iefix', folder, path)) format('embedded-opentype'),
+			 embedurl(s('%s/%s.woff', folder, path)) format('woff'),
+			 embedurl(s('%s/%s.woff2', folder, path)) format('woff2'),
+			 embedurl(s('%s/%s.ttf', folder, path)) format('truetype'),
+			 embedurl(s('%s/%s.svg#%s', folder, path, family)) format('svg')
+		font-weight: weight
+		font-style: style

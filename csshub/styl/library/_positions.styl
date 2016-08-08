@@ -1,0 +1,29 @@
+// helper
+//
+// Mixin for Offset Positioning
+//
+-position(type, args)
+	i = 0
+	position: unquote(type)
+	for j in (1..4)
+		if length(args) > i
+			{args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+		i += 1
+
+//
+// Mixin for fixed positioning
+//
+fixed()
+	-position('fixed', arguments)
+
+//
+// Mixin for absolute positioning
+//
+absolute()
+	-position('absolute', arguments)
+
+//
+// Mixin for relative positioning
+//
+relative()
+	-position('relative', arguments)

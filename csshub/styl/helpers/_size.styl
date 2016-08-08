@@ -1,0 +1,68 @@
+//
+// Size WH
+//
+size(width, height = width)
+	width: width
+	height: height
+
+// @api: private
+-to-percentage(arg, default-unit, ignore = false)
+	unit = unit(arg)
+
+	// Set default unit
+	if unit is ''
+		unit = default-unit
+
+	if ignore
+		defaultBase = 16
+	else
+		if unit($csshub_font-size) in ('px' 'pt' '%')
+			defaultBase = unit(-convert-to-unit($csshub_font-size, 'px', true), '')
+		else
+			defaultBase = 16
+
+	if unit is 'px'
+		arg = (defaultBase / 16) * (arg * 100) / 16
+	else if unit is 'em'
+		arg = ((arg * 100) * 16) / defaultBase
+	else if unit is 'rem'
+		arg = (arg * 100 * defaultBase) / 16
+	else if unit is 'pt'
+		arg = (((arg * 100) / 75) * 100) / defaultBase
+	else if unit is '%'
+		arg = (arg * 16) / defaultBase
+
+	return arg
+
+// @api: private
+-convert-to-unit(arg, unit, ignore = false)
+	percent = -to-percentage(arg, unit, ignore)
+
+	if unit is 'px'
+		arg = percent / 100 * 16
+	else if unit is 'em'
+		arg = percent / 100
+	else if unit is 'rem'
+		arg = percent / 100
+	else if unit is 'pt'
+		arg = percent / 100 * 12
+	else if unit is '%'
+		arg = percent
+
+	return unit(arg, unit)
+
+// Default: 100% == 16px == 1em == 12pt == 1rem
+px(arg, ignore = false)
+	-convert-to-unit(arg, 'px', ignore)
+
+pt(arg, ignore = false)
+	-convert-to-unit(arg, 'pt', ignore)
+
+em(arg, ignore = false)
+	-convert-to-unit(arg, 'em', ignore)
+
+rem(arg, ignore = false)
+	-convert-to-unit(arg, 'rem', ignore)
+
+percent(arg, ignore = false)
+	-convert-to-unit(arg, '%', ignore)

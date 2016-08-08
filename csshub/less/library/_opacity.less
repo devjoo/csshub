@@ -1,0 +1,14 @@
+//
+// Vendor "opacity" support.
+//
+.opacity(@alpha: .5) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(opacity, @alpha, @only);
+
+	// Support IE
+	.is_true(@csshub_support-for-ie; {
+		@opperc: percentage(@alpha);
+		filter: ~"alpha(opacity=@{opperc})";
+		-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+	});
+}

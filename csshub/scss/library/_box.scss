@@ -1,0 +1,65 @@
+//
+// Vendor "box-sizing" support.
+//
+@mixin box-sizing($args...) {
+	@include vendor-prefixes(box-sizing, $args, webkit moz official)
+}
+
+//
+// Vendor "box-shadow" support.
+//
+@mixin box-shadow($args...) {
+	@include vendor-prefixes(box-shadow, $args, webkit moz o official)
+}
+
+//
+// Vendor "box-orient" support.
+//
+@mixin box-orient($args...) {
+	@include vendor-prefixes(box-orient, $args, webkit moz official)
+}
+
+//
+// Vendor "box-flex-group" support.
+//
+@mixin box-flex-group($args...) {
+	@include vendor-prefixes(box-flex-group, $args, webkit moz official)
+}
+
+//
+// Vendor "box-ordinal-group" support.
+//
+@mixin box-ordinal-group($args...) {
+	@include vendor-prefixes(box-ordinal-group, $args, webkit moz ms official)
+}
+
+//
+// Vendor "box-align" support.
+//
+@mixin box-align($args...) {
+	@include vendor-prefixes(box-align, $args, webkit moz ms official)
+}
+
+//
+// Vendor "box-pack" support.
+//
+@mixin box-pack($args...) {
+	@include vendor-prefixes(box-pack, $args, webkit moz ms official)
+}
+
+//
+// Vendor "box-direction" support.
+//
+@mixin box-direction($args...) {
+	@include vendor-prefixes(box-direction, $args, webkit moz ms official)
+}
+
+//
+// Box Resize
+//
+@mixin box-resize($resize: none) {
+	resize: $resize;
+	overflow: auto;
+	min-width: 50px;
+	min-height: 50px;
+}

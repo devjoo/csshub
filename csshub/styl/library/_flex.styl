@@ -1,0 +1,91 @@
+//
+// Vendor "flex-block" support.
+//
+flex-block()
+	display: vendor-value-prefixes(box, only: webkit moz)
+	display: vendor-value-prefixes(flexbox, only: ms)
+	display: vendor-value-prefixes(flex, only: webkit official)
+//
+// Vendor "flex-inline" support.
+//
+flex-inline()
+	display: vendor-value-prefixes(inline-flexbox, only: ms)
+	display: vendor-value-prefixes(inline-flex, only: webkit official)
+
+//
+// Vendor "flex-flow" support.
+//
+flex-flow(direction = row, wrap = nowrap)
+	vendor-prefixes('flex-direction', direction, only: ms)
+	vendor-prefixes('flex-wrap', wrap, only: ms)
+	vendor-prefixes('flex-flow', direction wrap, only: webkit moz official)
+
+//
+// Vendor "align-content" support.
+//
+align-content()
+	vendor-prefixes('align-content', arguments, only: webkit moz ms official)
+
+//
+// Vendor "flex-direction" support.
+//
+flex-direction()
+	vendor-prefixes('flex-direction', arguments, only: webkit moz ms official)
+
+//
+// Vendor "flex-wrap" support.
+//
+flex-wrap()
+	vendor-prefixes('flex-wrap', arguments, only: webkit moz ms official)
+
+//
+// Vendor "justify-content" support.
+//
+justify-content()
+	vendor-prefixes('box-pack', arguments, only: webkit moz)
+	vendor-prefixes('flex-pack', replace("flex-", "", arguments), only: ms)
+	vendor-prefixes('justify-content', arguments, only: webkit official)
+
+//
+// Vendor "align-items" support.
+//
+align-items()
+	vendor-prefixes('box-align', arguments, only: webkit moz official)
+	vendor-prefixes('align-items', arguments, only: webkit moz official)
+
+//
+// Vendor "flex" support.
+//
+flex()
+	vendor-prefixes('flex', arguments, only: webkit moz ms official)
+
+//
+// Vendor "order" support.
+//
+order()
+	vendor-prefixes('box-ordinal-group', arguments, only: webkit moz ms official)
+	vendor-prefixes('flex-order', arguments, only: webkit moz ms official)
+
+//
+// Vendor "flex-grow" support.
+//
+flex-grow()
+	vendor-prefixes('flex-grow', arguments, only: webkit moz ms official)
+
+//
+// Vendor "flex-shrink" support.
+//
+flex-shrink()
+	vendor-prefixes('flex-shrink', arguments, only: webkit moz ms official)
+
+//
+// Vendor "flex-basis" support.
+//
+flex-basis()
+	vendor-prefixes('flex-basis', arguments, only: webkit moz ms official)
+
+//
+// Vendor "align-self" support.
+//
+align-self()
+	vendor-prefixes('align-self', arguments, only: webkit moz ms official)

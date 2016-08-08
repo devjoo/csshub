@@ -1,0 +1,17 @@
+//
+// Vendor "border-radius" supporting augmented behavior.
+//
+// Examples:
+//		border-radius: 5px
+//		border-radius: 1px 2px 3px 4px 5px
+//
+@mixin border-radius($args...) {
+	@include vendor-prefixes(border-radius, $args, webkit moz khtml official)
+}
+
+//
+// Vendor "border-image" support.
+//
+@mixin border-image($args...) {
+	@include vendor-prefixes(border-image, $args, webkit moz o official)
+}

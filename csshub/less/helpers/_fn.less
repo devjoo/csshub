@@ -1,0 +1,163 @@
+//
+// Check the true.
+//
+// @example less
+// @variable-boolean: true;
+//
+// .is_true(@variable-boolean, {
+// 		div {
+// 			color: red;
+// 		}
+// });
+//
+// @return css
+// div {
+//		color: red;
+// }
+//
+.is_true(@when; @callback...) when(@when) {
+	@callback();
+}
+
+//
+// Check for false
+//
+// @example less
+// @variable-boolean: false;
+//
+// .is_false(@variable-boolean, {
+// 		div {
+// 			color: red;
+// 		}
+// });
+//
+// @return css
+// div {
+//		color: red;
+// }
+//
+.is_false(@when; @callback...) when(@when = false) {
+	@callback();
+}
+
+//
+// Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more.
+//
+// @example less
+// @test-if: true;
+//
+// .if(@test-if, {
+// 		div.if {
+// 			color: red;
+// 		}
+// });
+//
+// @return css
+// div.if {
+// 		color: red;
+// }
+//
+.if(@when, @if) when (@when) {
+	@if();
+}
+
+//
+// Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more.
+//
+// @example less
+// @test-if-else: 5;
+//
+// .if-else(~`@{test-if-else} >= 6`, {
+// 		div.if {
+// 			color: red;
+// 		}
+// }, {
+// 		div.else {
+// 			color: green;
+// 		}
+// });
+//
+// @return css
+// div.else {
+// 		color: red;
+// }
+//
+.if-else(@when, @if, @else) {
+	& when (@when)         { @if();   }
+	& when (@when = false) { @else(); }
+}
+
+//
+// For support.
+//
+.for(@i, @n) {.-each(@i)}
+.for(@n)     when (isnumber(@n)) {.for(1, @n)}
+.for(@i, @n) when not (@i = @n)  {
+	.for((@i + (@n - @i) / abs(@n - @i)), @n);
+}
+
+//
+// For Each support.
+//
+// @example less
+// @test-for: while #fff, grey #ccc, black #000;
+// .item {
+// 	&.color {
+// 		.for(@test-for); .-each(@value) {
+// 			@name:  extract(@value, 1);
+// 			&-@{name} {
+// 				background-color: extract(@value, 2);
+// 			}
+// 		}
+// 	}
+// }
+//
+// @return css
+// .item.color-while {
+//		background-color: #fff;
+// }
+// .item.color-grey {
+//		background-color: #ccc;
+// }
+// .item.color-black {
+//		background-color: #000;
+// }
+//
+.for(@array)   when (default()) {.for-impl_(length(@array))}
+.for-impl_(@i) when (@i > 1)	{.for-impl_((@i - 1))}
+.for-impl_(@i) when (@i > 0)	{.-each(extract(@array, @i))}
+
+//
+// I loop over the given list and execute the given ruleset for each item.
+//
+// @example less
+// @images:
+//		"../images/image-1.jpg"
+//		"../images/image-2.jpg"
+// ;
+//
+// .each(@images, {
+//		.image-@{index} {
+//			background-image: url(@value);
+// 		}
+// });
+//
+// @return css
+// .image-1 {
+//		background-image: url("../images/image-1.jpg");
+// }
+// .image-2 {
+//		background-image: url("../images/image-2.jpg");
+// }
+//
+.each(@list, @ruleset) {
+	& when ( true ) {
+		@length: length(@list) ;
+		.loop(1) ;
+		.loop(@index) when (@index <= @length) {
+			@value: extract(@list, @index);
+			@ruleset() ;
+			.loop(@index + 1) ;
+		}
+	}
+} ;

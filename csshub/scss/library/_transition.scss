@@ -1,0 +1,34 @@
+//
+// Vendor "transitions" support.
+//
+@mixin transitions($args...) {
+	@include vendor-prefixes(transitions, $args, webkit moz o official)
+}
+
+//
+// Vendor "transition-delay" support.
+//
+@mixin transition-delay($args...) {
+	@include vendor-prefixes(transition-delay, $args, webkit moz o official)
+}
+
+//
+// Vendor "transition-duration" support.
+//
+@mixin transition-duration($args...) {
+	@include vendor-prefixes(transition-duration, $args, webkit moz o official)
+}
+
+//
+// Vendor "transition-property" support.
+//
+@mixin transition-property($args...) {
+	@include vendor-prefixes(transition-property, $args, webkit moz o official)
+}
+
+//
+// Vendor "transition-timing-function" support.
+//
+@mixin transition-timing-function($args...) {
+	@include vendor-prefixes(transition-timing-function, $args, webkit moz o official)
+}

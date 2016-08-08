@@ -1,0 +1,105 @@
+//
+// Vendor "calc" support.
+//
+.calc(@prop, @condition, @fallback: false) {
+	.if(~`"@{fallback}" != "false"`, {
+		@{prop}: @fallback
+	});
+
+	@only: webkit, moz, official;
+	.vendor-value-prefixes(@prop, ~'calc(@{condition})', @only);
+}
+
+//
+// Vendor "appearance" support.
+//
+.appearance(@args) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(appearance, @args, @only);
+}
+
+//
+// Vendor "user-select" support.
+//
+.user-select(@args) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(user-select, @args, @only);
+}
+
+//
+// Vendor "backface-visibility" support.
+//
+.backface-visibility(@args) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(backface-visibility, @args, @only);
+}
+
+//
+// Vendor "tab-size" support.
+//
+.tab-size(@args) {
+	@only: o, moz, official;
+	.vendor-prefixes(tab-size, @args, @only);
+}
+
+//
+// Vendor "overflow-scrolling" support.
+//
+.overflow-scrolling(@args) {
+	@only: webkit, moz, official;
+	.vendor-prefixes(overflow-scrolling, @args, @only);
+}
+
+//
+// Vendor "overflow-scrolling" support.
+//
+.font-smoothing(@args) {
+	@only: webkit;
+	.vendor-prefixes(font-smoothing, @args, @only);
+}
+
+//
+// Vendor "filter" support.
+//
+// filter: url(#blur); /* Firefox needs SVG */
+// filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5') /* IE */
+//
+.filter(@args) {
+	@only: webkit, moz, o, ms, official;
+	.vendor-prefixes(filter, @args, @only);
+}
+
+//
+// Support placeholder.
+//
+.placeholder(@args) {
+	&::-webkit-input-placeholder,
+	&::-moz-placeholder,
+	&:-moz-placeholder,
+	&:-ms-input-placeholder {
+		@args();
+	}
+}
+
+//
+// Support viewport.
+//
+.viewport(@args) {
+	@viewport			{ @args(); }
+	@-o-viewport		{ @args(); }
+	@-ms-viewport		{ @args(); }
+	@-moz-viewport		{ @args(); }
+	@-webkit-viewport	{ @args(); }
+}
+
+//
+// Support full-screen.
+//
+.full-screen(@args) {
+	&:-webkit-full-screen,
+	&:-moz-full-screen,
+	&:-ms-fullscreen,
+	&:fullscreen {
+		@args();
+	}
+}

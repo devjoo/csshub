@@ -1,0 +1,39 @@
+//
+// Vendor "transitions" support.
+//
+.transitions(@args) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(transitions, @args, @only);
+}
+
+//
+// Vendor "transition-delay" support.
+//
+.transition-delay(@args) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(transition-delay, @args, @only);
+}
+
+//
+// Vendor "transition-duration" support.
+//
+.transition-duration(@args) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(transition-duration, @args, @only);
+}
+
+//
+// Vendor "transition-property" support.
+//
+.transition-property(@args) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(transition-property, @args, @only);
+}
+
+//
+// Vendor "transition-timing-function" support.
+//
+.transition-timing-function(@args) {
+	@only: webkit, moz, o, official;
+	.vendor-prefixes(transition-timing-function, @args, @only);
+}

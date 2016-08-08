@@ -1,0 +1,77 @@
+//
+// Vendor "transform" support.
+//
+.transform(@args) {
+	@only: webkit, moz, ms, o, official;
+	.vendor-prefixes(transform, @args, @only);
+}
+
+//
+// Vendor "transform-origin" support.
+//
+.transform-origin(@args) {
+	@only: webkit, moz, ms, o, official;
+	.vendor-prefixes(transform-origin, @args, @only);
+}
+
+//
+// Vendor "transform-style" support.
+//
+.transform-style(@style) {
+	@only: webkit, moz, ms, o, official;
+	.vendor-prefixes(transform-style, @style, @only);
+}
+
+//
+// Transform Rotate.
+//
+.-rotate(@deg: 45deg) {
+	.transform(rotate(@deg));
+}
+
+//
+// Transform Scale.
+//
+.-scale(@factor: .5) {
+	.transform(scale(@factor));
+}
+
+//
+// Transform Translate.
+//
+.-translate(@x, @y) {
+	.transform(translate(@x, @y));
+}
+
+//
+// Transform Translate3D.
+//
+.-translate3d(@x, @y, @z) {
+	.transform(translate3d(@x, @y, @z));
+}
+
+//
+// Transform Translate Hardware.
+//
+.-translateHardware(@x, @y) {
+	.-translate(@x, @y);
+	-webkit-transform: translate3d(@x, @y, 0);
+	-o-transform: translate3d(@x, @y, 0);
+	transform: translate3d(@x, @y, 0);
+}
+
+//
+// Vendor "perspective" support.
+//
+.perspective(@args) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(perspective, @args, @only);
+}
+
+//
+// Vendor "perspective-origin" support.
+//
+.perspective-origin(@args) {
+	@only: webkit, moz, ms, official;
+	.vendor-prefixes(perspective-origin, @args, @only);
+}

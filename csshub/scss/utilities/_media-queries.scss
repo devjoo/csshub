@@ -1,0 +1,35 @@
+//
+// Extra small devices (phones, than 768px)
+//
+@mixin media-xs {
+	@media(max-width: $csshub_device-xs-max) {
+		@content;
+	}
+}
+
+//
+// Small devices (tablets, 768px and up)
+//
+@mixin media-sm {
+	@media(min-width: $csshub_device-sm-min) {
+		@content;
+	}
+}
+
+//
+// Medium devices (desktops, 992px and up)
+//
+@mixin media-md {
+	@media(min-width: $csshub_device-md-min) {
+		@content;
+	}
+}
+
+//
+// Large devices (large desktops, 1200px and up)
+//
+@mixin media-lg {
+	@media(min-width: $csshub_device-lg-min) {
+		@content;
+	}
+}

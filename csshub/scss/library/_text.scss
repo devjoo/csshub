@@ -1,0 +1,39 @@
+//
+// Hides the text in an element, commonly used to show an image instead. Some
+// elements will need block-level styles applied.
+//
+@mixin hide-text() {
+	overflow: hidden;
+	text-indent: 101%;
+	white-space: nowrap;
+}
+
+//
+// Vendor "hyphens" support.
+//
+@mixin hyphens($args...) {
+	@include vendor-prefixes(hyphens, $args, webkit moz ms official)
+}
+
+//
+// Vendor "text-size-adjust" support.
+//
+@mixin text-size-adjust($args...) {
+	@include vendor-prefixes(text-size-adjust, $args, webkit moz official)
+}
+
+//
+// Vendor "text-overflow" support.
+//
+@mixin text-overflow($args...) {
+	@include vendor-prefixes(text-overflow, $args, o official)
+}
+
+//
+// Clip text.
+//
+@mixin text-ellipsis() {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}

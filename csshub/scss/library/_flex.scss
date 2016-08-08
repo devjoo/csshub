@@ -1,0 +1,107 @@
+//
+// Vendor "flex-block" support.
+//
+@mixin flex-block() {
+	@include vendor-value-prefixes(display, box, webkit moz);
+	@include vendor-value-prefixes(display, flexbox, ms);
+	@include vendor-value-prefixes(display, flex, webkit official);
+}
+
+//
+// Vendor "flex-inline" support.
+//
+@mixin flex-inline() {
+	@include vendor-value-prefixes(display, inline-flexbox, ms);
+	@include vendor-value-prefixes(display, inline-flex, webkit official);
+}
+
+//
+// Vendor "flex-flow" support.
+//
+@mixin flex-flow($direction: row, $wrap: nowrap) {
+	@include vendor-prefixes(flex-direction, $direction, ms);
+	@include vendor-prefixes(flex-wrap, $wrap, ms);
+	@include vendor-prefixes(flex-flow, $direction, webkit moz official);
+}
+
+//
+// Vendor "align-content" support.
+//
+@mixin align-content($args...) {
+	@include vendor-prefixes(align-content, $args, webkit moz ms official)
+}
+
+//
+// Vendor "flex-direction" support.
+//
+@mixin flex-direction($args...) {
+	@include vendor-prefixes(flex-direction, $args, webkit moz ms official)
+}
+
+//
+// Vendor "flex-wrap" support.
+//
+@mixin flex-wrap($args...) {
+	@include vendor-prefixes(flex-wrap, $args, webkit moz ms official)
+}
+
+//
+// Vendor "justify-content" support.
+//
+@mixin justify-content($args...) {
+	@include vendor-prefixes(box-pack, $args, webkit moz);
+	$ms-args: str-replace('' + $args, "flex-", "");
+	@include vendor-prefixes(flex-pack, $ms-args, ms);
+	@include vendor-prefixes(justify-content, $args, webkit official);
+}
+
+//
+// Vendor "align-items" support.
+//
+@mixin align-items($args...) {
+	@include vendor-prefixes(box-align, $args, webkit moz official);
+	@include vendor-prefixes(align-items, $args, webkit moz official);
+}
+
+//
+// Vendor "flex" support.
+//
+@mixin flex($args...) {
+	@include vendor-prefixes(flex, $args, webkit moz ms official)
+}
+
+//
+// Vendor "order" support.
+//
+@mixin order($args...) {
+	@include vendor-prefixes(box-ordinal-group, $args, webkit moz ms official);
+	@include vendor-prefixes(flex-order, $args, webkit moz ms official);
+}
+
+//
+// Vendor "flex-grow" support.
+//
+@mixin flex-grow($args...) {
+	@include vendor-prefixes(flex-grow, $args, webkit moz ms official)
+}
+
+//
+// Vendor "flex-shrink" support.
+//
+@mixin flex-shrink($args...) {
+	@include vendor-prefixes(flex-shrink, $args, webkit moz ms official)
+}
+
+//
+// Vendor "flex-basis" support.
+//
+@mixin flex-basis($args...) {
+	@include vendor-prefixes(flex-basis, $args, webkit moz ms official)
+}
+
+//
+// Vendor "align-self" support.
+//
+@mixin align-self($args...) {
+	@include vendor-prefixes(align-self, $args, webkit moz ms official)
+}

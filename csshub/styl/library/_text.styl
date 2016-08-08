@@ -1,0 +1,34 @@
+//
+// Hides the text in an element, commonly used to show an image instead. Some
+// elements will need block-level styles applied.
+//
+hide-text()
+	overflow: hidden
+	text-indent: 101%
+	white-space: nowrap
+
+//
+// Vendor "hyphens" support.
+//
+hyphens()
+	vendor-prefixes('hyphens', arguments, only: webkit moz ms official)
+
+//
+// Vendor "text-size-adjust" support.
+//
+text-size-adjust()
+	vendor-prefixes('text-size-adjust', arguments, only: webkit moz official)
+
+//
+// Vendor "text-overflow" support.
+//
+text-overflow()
+	vendor-prefixes('text-overflow', arguments, only: o official)
+
+//
+// Clip text.
+//
+text-ellipsis()
+	text-overflow: ellipsis
+	overflow: hidden
+	white-space: nowrap
