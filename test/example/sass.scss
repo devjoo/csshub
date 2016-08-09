@@ -353,7 +353,7 @@ div {
 
 /* Test transitions */
 div {
-	@include transitions(all .2s ease)
+	@include transition(all .2s ease)
 }
 
 /* Test transition-delay */

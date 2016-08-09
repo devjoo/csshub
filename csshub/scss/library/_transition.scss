@@ -2,7 +2,7 @@
 // Vendor "transitions" support.
 //
 @mixin transitions($args...) {
-	@include vendor-prefixes(transitions, $args, webkit moz o official)
+	@include vendor-prefixes(transition, $args, webkit moz o official)
 }
 
 //
