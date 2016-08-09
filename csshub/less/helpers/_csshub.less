@@ -46,8 +46,8 @@
 						case 'px': $return = topercent(val, fromUnit, defaultBase) / 100 * 16; break;
 						case 'em': $return = topercent(val, fromUnit, defaultBase) / 100; break;
 						case 'pt': $return = topercent(val, fromUnit, defaultBase) / 100 * 12; break;
-						case 'rem': $return = $return = topercent(val, fromUnit, defaultBase) / 100; break;
-						case 'percent': $return = $return = topercent(val, fromUnit, defaultBase); break;
+						case 'rem': $return = topercent(val, fromUnit, defaultBase) / 100; break;
+						case 'percent': $return = topercent(val, fromUnit, defaultBase); break;
 						default: $return = val;
 					}
 				} else {
