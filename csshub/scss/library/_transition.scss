@@ -1,7 +1,7 @@
 //
 // Vendor "transitions" support.
 //
-@mixin transitions($args...) {
+@mixin transition($args...) {
 	@include vendor-prefixes(transition, $args, webkit moz o official)
 }
 
