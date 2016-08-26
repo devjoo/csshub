@@ -4,7 +4,7 @@
 //
 @mixin hide-text() {
 	overflow: hidden;
-	text-indent: 101%;
+	text-indent: -101%;
 	white-space: nowrap;
 }
 
